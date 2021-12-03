@@ -16,7 +16,7 @@ public class Fraction {
     }
 
     public Fraction(@NotNull String fraction) {
-        if(!fraction.contains("/") || Utils.hasDuplicate(fraction, '/')) {
+        if(!fraction.contains("/") || Util.hasDuplicate(fraction, '/')) {
             throw new IllegalArgumentException("Mauvaise écriture, veuillez recommencer");
         }
         String[] content = fraction.split("/");
@@ -33,7 +33,7 @@ public class Fraction {
     }
 
     public Fraction reducePermanent() {
-        int hcf = Utils.hcf(numerator, denominator);
+        int hcf = Util.hcf(numerator, denominator);
 
         setNumerator(numerator / hcf);
         setDenominator(denominator / hcf);
@@ -53,12 +53,12 @@ public class Fraction {
     }
 
     public Fraction add(@NotNull Fraction fraction) {
-        int lcm = Utils.lcm(denominator, fraction.denominator);
+        int lcm = Util.lcm(denominator, fraction.denominator);
         return new Fraction(numerator * (lcm / denominator) + fraction.numerator * (lcm / fraction.denominator), lcm);
     }
 
     public Fraction subtract(@NotNull Fraction fraction) {
-        int lcm = Utils.lcm(denominator, fraction.denominator);
+        int lcm = Util.lcm(denominator, fraction.denominator);
         return new Fraction(numerator * (lcm / denominator) - fraction.numerator * (lcm / fraction.denominator), lcm);
     }
 

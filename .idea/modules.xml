@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TD-Prog-Orientée-Objet.iml" filepath="$PROJECT_DIR$/TD-Prog-Orientée-Objet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TD-Prog-Orientee-Objet.iml" filepath="$PROJECT_DIR$/TD-Prog-Orientee-Objet.iml" />
       <module fileurl="file://$PROJECT_DIR$/TD6/TD6.iml" filepath="$PROJECT_DIR$/TD6/TD6.iml" />
       <module fileurl="file://$PROJECT_DIR$/TD7/TD7.iml" filepath="$PROJECT_DIR$/TD7/TD7.iml" />
     </modules>

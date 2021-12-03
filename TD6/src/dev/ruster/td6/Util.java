@@ -3,7 +3,7 @@ package dev.ruster.td6;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-public class Utils {
+public class Util {
 
     public static void sleep(long milliseconds) {
         try {

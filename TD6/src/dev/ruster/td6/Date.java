@@ -37,7 +37,7 @@ public class Date {
 
     @Contract(pure = true)
     public Date(@NotNull String date) {
-        if(!date.contains("/") || !Utils.hasRightDateFormat(date)) {
+        if(!date.contains("/") || !Util.hasRightDateFormat(date)) {
             throw new IllegalArgumentException("Mauvais format de date");
         }
         String[] content = date.split("/");
@@ -115,7 +115,7 @@ public class Date {
 
     public void display(boolean full) {
         if(full) {
-            System.out.println(day + " " + Utils.firstLetterCapital(months[month - 1]) + " " + year);
+            System.out.println(day + " " + Util.firstLetterCapital(months[month - 1]) + " " + year);
         } else {
             System.out.println(
                     "0".repeat(2 - day.toString().length()) + day + "/" +
