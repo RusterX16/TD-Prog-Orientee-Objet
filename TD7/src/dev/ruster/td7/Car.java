@@ -3,7 +3,7 @@ package dev.ruster.td7;
 public class Car {
 
     private String name;
-    private int posistion = 0;
+    private int position = 0;
     private int speed;
     private boolean sens = true;
 
@@ -15,20 +15,20 @@ public class Car {
     @Override
     public String toString() {
         return "name = " + name + "\n" +
-                "position = " + posistion + "\n" +
+                "position = " + position + "\n" +
                 "speed = " + speed + "\n";
     }
 
     public String position() {
-        return name.charAt(0) + " :\n" + " ".repeat(posistion) + (sens ? "»" : "«");
+        return name.charAt(0) + " :\n" + " ".repeat(Math.max(0, position)) + (sens ? "»" : "«");
     }
 
     public boolean exceeds(int limit) {
-        return posistion >= limit;
+        return position >= limit;
     }
 
     public void stepForward() {
-        posistion += speed;
+        position += speed;
     }
 
     public void start() {
@@ -53,11 +53,11 @@ public class Car {
     }
 
     public int getPosition() {
-        return posistion;
+        return position;
     }
 
     public void setPosition(int position) {
-        this.posistion = position;
+        this.position = position;
     }
 
     public boolean isReversed() {
