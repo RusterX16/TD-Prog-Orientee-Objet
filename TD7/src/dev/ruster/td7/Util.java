@@ -4,6 +4,10 @@ import java.util.Random;
 
 public class Util {
 
+    public static void ln(int count) {
+        System.out.println("\n".repeat(count));
+    }
+
     public static void sleep(long milliseconds) {
         try {
             Thread.sleep(milliseconds);
@@ -12,7 +16,7 @@ public class Util {
         }
     }
 
-    public static int randomBetween(int a, int b) {
-        return new Random().nextInt(Math.max(a, b) - Math.min(a, b)) + Math.min(a, b);
+    public int getRandomBetween(int min, int max) {
+        return new Random().nextInt(max - min) + min;
     }
 }
