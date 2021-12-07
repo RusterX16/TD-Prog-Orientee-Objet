@@ -14,9 +14,12 @@ public class Car {
 
     @Override
     public String toString() {
-        return "name = " + name + "\n" +
-                "position = " + position + "\n" +
-                "speed = " + speed + "\n";
+        return "Car{" +
+                "name='" + name + '\'' +
+                ", position=" + position +
+                ", speed=" + speed +
+                ", sens=" + sens +
+                '}';
     }
 
     public String position() {

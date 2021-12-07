@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="TD-Prog-Orientee-Objet:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TD_Prog_Orientee_Objet_jar</output-path>
+    <root id="archive" name="TD-Prog-Orientee-Objet.jar">
+      <element id="module-output" name="TD6" />
+      <element id="module-output" name="TD-Prog-Orientee-Objet" />
+      <element id="module-output" name="TD7" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/codepoetics/protonpack/1.16/protonpack-1.16.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jetbrains/annotations/20.1.0/annotations-20.1.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

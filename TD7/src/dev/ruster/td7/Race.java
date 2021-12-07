@@ -1,49 +1,64 @@
 package dev.ruster.td7;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
 public class Race {
 
-    private Car car1;
-    private Car car2;
+    private List<Car> cars = new ArrayList<>();
     private int length;
+    private int roundCount;
 
-    public Race(Car car1, Car car2, int length) {
+    public Race(int length, int roundCount, Car... cars) {
         if(length <= 0) {
             throw new IllegalArgumentException("La longueur de la piste doit être positive");
         }
-        this.car1 = car1;
-        this.car2 = car2;
+        Collections.addAll(this.cars, cars);
         this.length = length;
+        this.roundCount = roundCount;
     }
 
     @Override
     public String toString() {
-        return car1.position() + " ".repeat(Math.max(0, length - car1.getPosition())) + "|" + "\n" +
-                car2.position() + " ".repeat(Math.max(0, length - car2.getPosition())) + "|" + "\n";
+        List<String> lines = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+
+        cars.forEach(c -> lines.add(c.position() + " ".repeat(Math.max(0, length - c.getPosition())) + "|" + "\n"));
+        lines.forEach(sb::append);
+        return sb.toString();
     }
 
     public void play() {
-        while(!car1.isReversed() && car1.getPosition() >= 0 || car2.isReversed() && car2.getPosition() >= 0) {
-            Util.sleep(500);
+        Random r = new Random();
+        boolean isPlaying = true;
+        int round = 1;
 
-            if(car1.getPosition() >= length) {
-                car1.turnDown();
-            }
-            if(car2.getPosition() >= length) {
-                car2.turnDown();
-            }
+        while(isPlaying) {
+            Util.sleep(250);
 
-            car1.stepForward();
-            car2.stepForward();
-            System.out.println(this);
-            Util.ln(4);
+            for(int i = 0; i < cars.size(); i++) {
+                Car c = cars.get(i);
+
+                if(c.isReversed() && c.getPosition() <= 0) {
+                    round++;
+                }
+                if(round + cars.size() == roundCount * cars.size()) {
+                    isPlaying = false;
+                }
+                if(!c.isReversed() && c.getPosition() >= length || c.isReversed() && c.getPosition() <= 0) {
+                    c.turnDown();
+                }
+                System.out.println(c);
+                /*if(r.nextInt(cars.size()) == i) {
+                    c.stepForward();
+                }*/
+                c.stepForward();
+                System.out.println(this);
+            }
         }
 
-        if(car1.getPosition() > car2.getPosition()) {
-            System.out.println(car1.getName() + " a gagné la course !");
-        } else if(car1.getPosition() < car2.getPosition()) {
-            System.out.println(car2.getName() + " a gagné la course !");
-        } else {
-            System.out.println("Egalité !");
-        }
+        System.out.println("Fini !");
     }
 }

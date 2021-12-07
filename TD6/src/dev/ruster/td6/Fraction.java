@@ -41,7 +41,7 @@ public class Fraction {
     }
 
     public Fraction reduce() {
-        return new Fraction(numerator, denominator).reducePermanent();
+        return new Fraction(this).reducePermanent();
     }
 
     public Fraction multiply(@NotNull Fraction fraction) {
