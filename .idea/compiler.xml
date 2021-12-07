@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="TD-Prog-Orientée-Objet" />
+        <module name="TD-Prog-Orientee-Objet" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="TD-Prog-Orientée-Objet" target="17" />
+      <module name="TD-Prog-Orientee-Objet" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
