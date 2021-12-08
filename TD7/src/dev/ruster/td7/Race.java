@@ -33,7 +33,6 @@ public class Race {
     public void play() {
         Random r = new Random();
         boolean isPlaying = true;
-        int round = 1;
 
         while(isPlaying) {
             Util.sleep(250);
@@ -41,24 +40,25 @@ public class Race {
             for(int i = 0; i < cars.size(); i++) {
                 Car c = cars.get(i);
 
-                if(c.isReversed() && c.getPosition() <= 0) {
-                    round++;
-                }
-                if(round + cars.size() == roundCount * cars.size()) {
+                c.stepForward();
+                System.out.println(this);
+
+                if(c.getRound() == roundCount + 1) {
                     isPlaying = false;
+                }
+                if(c.isReversed() && c.getPosition() <= 0) {
+                    c.round();
                 }
                 if(!c.isReversed() && c.getPosition() >= length || c.isReversed() && c.getPosition() <= 0) {
                     c.turnDown();
                 }
-                System.out.println(c);
                 /*if(r.nextInt(cars.size()) == i) {
                     c.stepForward();
                 }*/
-                c.stepForward();
-                System.out.println(this);
             }
         }
 
+        cars.forEach(c -> c.setRound(0));
         System.out.println("Fini !");
     }
 }

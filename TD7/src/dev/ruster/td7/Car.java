@@ -5,6 +5,7 @@ public class Car {
     private String name;
     private int position = 0;
     private int speed;
+    private int round = 1;
     private boolean sens = true;
 
     public Car(String name, int speed) {
@@ -18,6 +19,7 @@ public class Car {
                 "name='" + name + '\'' +
                 ", position=" + position +
                 ", speed=" + speed +
+                ", round=" + round +
                 ", sens=" + sens +
                 '}';
     }
@@ -43,6 +45,10 @@ public class Car {
         setSens(!sens);
     }
 
+    public void round() {
+        round++;
+    }
+
     private void setSens(boolean sens) {
         this.sens = sens;
     }
@@ -65,5 +71,13 @@ public class Car {
 
     public boolean isReversed() {
         return !sens;
+    }
+
+    public int getRound() {
+        return round;
+    }
+
+    public void setRound(int round) {
+        this.round = round;
     }
 }

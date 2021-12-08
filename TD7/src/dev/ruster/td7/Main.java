@@ -8,7 +8,7 @@ public final class Main {
         Car car3 = new Car("La baguette", 2);
         Car car4 = new Car("GitHub", 5);
 
-        Race race = new Race(35, 2, car1, car2, car3, car4);
+        Race race = new Race(35, 3, car1, car2, car3, car4);
         race.play();
     }
 }
