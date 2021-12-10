@@ -1,9 +1,12 @@
 package dev.ruster.td7;
 
+import com.codepoetics.protonpack.StreamUtils;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Race {
 
@@ -27,6 +30,7 @@ public class Race {
 
         cars.forEach(c -> lines.add(c.position() + " ".repeat(Math.max(0, length - c.getPosition())) + "|" + "\n"));
         lines.forEach(sb::append);
+        sb.append("-".repeat(length));
         return sb.toString();
     }
 
@@ -35,7 +39,7 @@ public class Race {
         boolean isPlaying = true;
 
         while(isPlaying) {
-            Util.sleep(250);
+            Util.sleep(1000);
 
             for(int i = 0; i < cars.size(); i++) {
                 Car c = cars.get(i);
@@ -58,7 +62,11 @@ public class Race {
             }
         }
 
-        cars.forEach(c -> c.setRound(0));
-        System.out.println("Fini !");
+        System.out.println("Terminlé ! \nListe de gagnants :");
+        StreamUtils.zipWithIndex(cars.stream())
+                .filter(c -> c.getValue().getRound() == roundCount + 1)
+                .forEach(c -> System.out.println("- " + c.getValue().getName())
+                );
+        cars.forEach(Car::reset);
     }
 }

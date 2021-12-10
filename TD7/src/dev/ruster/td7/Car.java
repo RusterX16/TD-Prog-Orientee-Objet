@@ -49,12 +49,21 @@ public class Car {
         round++;
     }
 
-    private void setSens(boolean sens) {
-        this.sens = sens;
+    public void reset() {
+        setPosition(0);
+        setRound(0);
+    }
+
+    public int getSpeed() {
+        return speed;
     }
 
     private void setSpeed(int speed) {
         this.speed = speed;
+    }
+
+    private void setSens(boolean sens) {
+        this.sens = sens;
     }
 
     public String getName() {
