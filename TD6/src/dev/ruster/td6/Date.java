@@ -61,6 +61,10 @@ public class Date {
         }
     }
 
+    public Date(@NotNull Date date) {
+        this(date.day, date.month, date.year);
+    }
+
     public Date tomorrow() {
         int day = getDay();
         int month = getMonth();
@@ -79,10 +83,6 @@ public class Date {
         }
         return new Date(day, month, year);
     }
-
-
-
-
 
     public boolean isAfter(@NotNull Date date) {
         boolean isAfter = true;
