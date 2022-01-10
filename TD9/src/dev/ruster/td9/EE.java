@@ -73,8 +73,8 @@ public class EE {
     }
 
     private int removeUtil(int n) {
-        if(contains(set[n])) {
-            IntStream.range(n, cardinal).filter(i -> i + 1 != cardinal).forEach(i -> set[i] = set[i + 1]);
+        if(contains(n)) {
+            IntStream.range(indexOf(n), cardinal).filter(i -> i + 1 != cardinal).forEach(i -> set[i] = set[i + 1]);
             cardinal--;
         }
         return n;
@@ -102,7 +102,7 @@ public class EE {
 
     public boolean remove(int n) {
         if(contains(n)) {
-            set[indexOf(n)] = 0;
+            removeUtil(n);
             return true;
         }
         return false;

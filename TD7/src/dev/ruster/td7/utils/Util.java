@@ -1,4 +1,4 @@
-package dev.ruster.td7;
+package dev.ruster.td7.utils;
 
 import java.util.Random;
 

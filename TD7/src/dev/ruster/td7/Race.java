@@ -1,12 +1,12 @@
 package dev.ruster.td7;
 
 import com.codepoetics.protonpack.StreamUtils;
+import dev.ruster.td7.utils.Util;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 public class Race {
 

@@ -1,6 +1,5 @@
 package dev.ruster.td8;
 
-import com.codepoetics.protonpack.StreamUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -58,20 +57,27 @@ public class EE {
         return IntStream.range(0, set.length).filter(i -> set[i] == n).findFirst().orElse(-1);
     }
 
+    private int contain(int n) {
+        if(Arrays.stream(set).anyMatch(e -> e == n)) {
+            return n;
+        }
+        return -1;
+    }
+
     public boolean contains(int n) {
-        return Arrays.stream(set).anyMatch(e -> e == n);
+        return contain(n) != 1;
     }
 
     private void add(int n) {
-        if(!contains(n)) {
-            set[cardinal] = n;
-            cardinal++;
-        }
+        set[cardinal] = n;
+        cardinal++;
     }
 
     private int remove(int n) {
         if(contains(n)) {
-            set[indexOf(n)] = 0;
+            set[indexOf(n)] = set[cardinal - 1];
+            set[cardinal - 1] = 0;
+            cardinal--;
         }
         return n;
     }
@@ -97,8 +103,8 @@ public class EE {
     }
 
     public boolean removeElement(int n) {
-        if(contains(n)) {
-            set[indexOf(n)] = 0;
+        if(contain(n) != -1) {
+            remove(contain(n));
             return true;
         }
         return false;
