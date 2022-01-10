@@ -19,7 +19,7 @@ public class Orque {
         count++;
     }
 
-    public static Orque getKillerWhaleById(int id) {
+    public static Orque getOrqueById(int id) {
         Optional<Orque> op = Optional.empty();
 
         for(Orque o : ORQUEARRAY) {
@@ -29,6 +29,12 @@ public class Orque {
             }
         }
         return op.orElse(null);
+    }
+
+    public int duel(Arena arena, int index) {
+        int looser = new Random().nextBoolean() ? id : index;
+        arena.getSet().remove(looser);
+        return looser;
     }
 
     public void damage(double damage) {

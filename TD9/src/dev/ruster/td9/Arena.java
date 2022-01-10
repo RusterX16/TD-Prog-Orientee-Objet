@@ -1,7 +1,11 @@
 package dev.ruster.td9;
 
+import dev.ruster.td9.utils.Utils;
+
 import java.util.Arrays;
 import java.util.Objects;
+
+import static dev.ruster.td9.Orque.*;
 
 public class Arena {
 
@@ -18,18 +22,27 @@ public class Arena {
     }
 
     public void battle() {
-        System.out.println(orqueSet);
+        System.out.println("Orques en vie : " + orqueSet);
 
         while(orqueSet.getCardinal() > 1) {
-            orqueSet.removeRandomly();
-            System.out.println(orqueSet);
+            int i1 = orqueSet.selectRandomly();
+            int i2 = orqueSet.selectRandomly();
 
-            try {
-                Thread.sleep(1000);
-            } catch(InterruptedException e) {
-                e.printStackTrace();
+            System.out.println(ORQUEARRAY[i1].getId() + " VS " + ORQUEARRAY[i2].getId());
+
+            while(i1 == i2) {
+                i2 = orqueSet.selectRandomly();
             }
+            int looser = ORQUEARRAY[i1].duel(this, i2);
+            System.out.println("Orque " + ORQUEARRAY[looser].getId() + " est mort");
+
+            System.out.println("Orques en vie : " + orqueSet);
+            Utils.pause(2000);
         }
-        System.out.println("Féliciation à l'orque numéro " + Orque.ORQUEARRAY[orqueSet.getSet()[0]].getId() + " qui gagne la bataille");
+        System.out.println("Féliciation à l'orque numéro " + ORQUEARRAY[orqueSet.getSet()[0]].getId() + " qui gagne la bataille");
+    }
+
+    public EE getSet() {
+        return orqueSet;
     }
 }

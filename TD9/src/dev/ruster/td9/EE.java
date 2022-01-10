@@ -64,6 +64,9 @@ public class EE {
 
     private void addUtil(int n) {
         if(!contains(n)) {
+            if(overflow()) {
+                throw new ArrayIndexOutOfBoundsException("Plus d'espace mémoire disponible dans le tableau");
+            }
             set[cardinal] = n;
             cardinal++;
         }
@@ -110,7 +113,6 @@ public class EE {
             throw new IllegalArgumentException("Ensemble vide");
         }
         int i = new Random().nextInt(cardinal);
-        System.out.println(i);
         return removeUtil(i);
     }
 
