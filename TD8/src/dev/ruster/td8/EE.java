@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
 
 public class EE {
 
-    private int[] set;
+    private final int[] set;
     private int cardinal;
 
     public EE(int max) {
@@ -32,7 +32,7 @@ public class EE {
         String[] content = set.split(" ");
         cardinal = content.length;
 
-        StreamUtils.zipWithIndex(Arrays.stream(content)).forEach(e -> this.set[(int) e.getIndex()] = Integer.parseInt(e.getValue()));
+        IntStream.range(0, content.length).forEach(i -> this.set[i] = Integer.parseInt(content[i]));
     }
 
     public EE(@NotNull EE ee) {
