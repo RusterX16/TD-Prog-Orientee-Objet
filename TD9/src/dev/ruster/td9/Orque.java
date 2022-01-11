@@ -5,8 +5,6 @@ import dev.ruster.td9.utils.Utils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
-import java.util.Optional;
-import java.util.stream.IntStream;
 
 public class Orque {
 
@@ -17,11 +15,12 @@ public class Orque {
     private Arena arena;
 
     private final int id;
-    private double health = Utils.rand.nextInt(150, 200);
+    private double health;
     private Weapon weapon;
 
     public Orque() {
         id = Utils.rand.nextInt(orques.length);
+        health = Utils.rand.nextInt(200 - 150) + 150;
         orques[id] = this;
         count++;
     }
@@ -35,7 +34,7 @@ public class Orque {
     }
 
     public void damage(double damage) {
-        health = (health - damage <= 0 ? 0 : health - damage);
+        health -= Math.max(0, damage);
     }
 
     public Weapon pick() {
@@ -43,12 +42,8 @@ public class Orque {
         return weapon;
     }
 
-    public boolean attack(@NotNull Orque orque) {
-        if(Utils.rand.nextInt(100) / (double) 100 < weapon.getAccuracy()) {
-            orque.damage(weapon.getDamage());
-            return true;
-        }
-        return false;
+    public boolean attack() {
+        return Utils.rand.nextInt(100) / (double) 100 < weapon.getAccuracy();
     }
 
     public void setArena(Arena arena) {
@@ -59,8 +54,12 @@ public class Orque {
         this.weapon = weapon;
     }
 
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
     public double getHealth() {
-        return health;
+        return Math.max(0, health);
     }
 
     public int getId() {
@@ -74,4 +73,15 @@ public class Orque {
     public boolean isKo() {
         return health <= 0;
     }
+
+/*    @Override
+    public String toString() {
+        return "Orque{" +
+                "weaponSet=" + weaponSet +
+                ", arena=" + arena +
+                ", id=" + id +
+                ", health=" + health +
+                ", weapon=" + weapon +
+                '}';
+    }*/
 }

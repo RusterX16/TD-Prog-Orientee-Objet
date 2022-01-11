@@ -47,9 +47,9 @@ public class EE {
 
         IntStream.range(0, set.length)
                 .takeWhile(i -> i < cardinal)
-                .forEach(i -> lines.add(set[i] + ", "));
+                .forEach(i -> lines.add(set[i] + i == set.length - 1 ? "" : ", "));
         lines.forEach(sb::append);
-        sb.delete(sb.length() - 2, sb.length()).append("}.").append(cardinal);
+        sb.append("}.").append(cardinal);
 
         return sb.toString();
     }
