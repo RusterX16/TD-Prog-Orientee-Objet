@@ -80,8 +80,8 @@ public class Liste {
         int lentgh = 0;
 
         while(courant != null) {
-            courant = courant.getSuiv();
             lentgh++;
+            courant = courant.getSuiv();
         }
         return lentgh;
     }
@@ -100,6 +100,9 @@ public class Liste {
     public int dernierElt() {
         Maillon courant = tete;
 
+        if(estVide()) {
+            throw new IllegalCallerException("La liste ne peut pas être vide");
+        }
         while(courant != null) {
             if(courant.getSuiv() == null) {
                 return courant.getVal();
@@ -114,6 +117,147 @@ public class Liste {
             throw new IllegalArgumentException("k doit être un entier positif");
         }
         return longueur() >= k;
+    }
+
+    public boolean estSupK2(int k) {
+        Maillon courant = tete;
+        boolean sup = false;
+
+        while(courant != null && !sup) {
+            if(k >= 0) {
+                sup = true;
+            }
+            courant = courant.getSuiv();
+        }
+        return sup;
+    }
+
+    public boolean longueurPaire() {
+        return longueur() % 2 == 0;
+    }
+
+    public int max() {
+        Maillon courant = tete;
+        int max = 0;
+
+        while(courant != null) {
+            max = Math.max(max, courant.getVal());
+            courant = courant.getSuiv();
+        }
+        return max;
+    }
+
+    public int occurrences(int n) {
+        Maillon courant = tete;
+        int occ = 0;
+
+        while(courant != null) {
+            if(courant.getVal() == n) {
+                occ++;
+            }
+            courant = courant.getSuiv();
+        }
+        return occ;
+    }
+
+    public void ajoutFin(int n) {
+        if(estVide()) {
+            tete = new Maillon(n);
+            return;
+        }
+        Maillon courant = tete;
+
+        while(courant.getSuiv() != null) {
+            courant = courant.getSuiv();
+        }
+        courant.setSuiv(new Maillon(n));
+    }
+
+    public void ajoutFinSiAbsent(int n) {
+        if(!contient(n)) {
+            ajoutFin(n);
+        }
+    }
+
+    public Liste extraireImpairsTete() {
+        Liste out = new Liste();
+        Maillon courant = tete;
+
+        while(courant.getSuiv() != null) {
+            if(courant.getVal() % 2 == 1) {
+                out.ajoutTete(courant.getVal());
+            }
+            courant = courant.getSuiv();
+        }
+        return out;
+    }
+
+    public Liste extraireImpairsQueue() {
+        Liste out = new Liste();
+        Maillon courant = tete;
+
+        while(courant.getSuiv() != null) {
+            if(courant.getVal() % 2 == 1) {
+                out.ajoutFin(courant.getVal());
+            }
+            courant = courant.getSuiv();
+        }
+        return out;
+    }
+
+    public boolean estClone(Liste liste) {
+        Maillon courant = tete;
+        Maillon courantListe = liste.tete;
+        boolean equals = longueur() == liste.longueur();
+
+        while(courant.getSuiv() != null && equals) {
+            if(courant.getVal() != courantListe.getVal()) {
+                equals = false;
+            }
+            courant = courant.getSuiv();
+            courantListe = courantListe.getSuiv();
+        }
+        return equals;
+    }
+
+    public void supprOcc(int n) {
+/*        Maillon courant = tete;
+        boolean reached = false;
+
+        while(courant != null) {
+            if(courant.getVal() == n && !reached) {
+                courant.setVal(-99);
+                courant = courant.getSuiv();
+                reached = true;
+            }
+            courant = courant.getSuiv();
+        }*/
+    }
+
+    public void tronquerK(int k) {
+        Maillon courant = tete;
+        int length = 0;
+
+        while(courant != null) {
+            length++;
+
+            if(length >= k) {
+                courant.setSuiv(null);
+                break;
+            }
+            courant = courant.getSuiv();
+        }
+    }
+
+    public Liste inverse() {
+        Liste out = new Liste();
+        Maillon courant = tete;
+
+        while(courant != null) {
+            out.ajoutTete(courant.getVal());
+            courant = courant.getSuiv();
+        }
+        return out;
     }
 
     @Override

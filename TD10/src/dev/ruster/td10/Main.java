@@ -3,7 +3,6 @@ package dev.ruster.td10;
 public class Main {
 
     public static void main(String[] args) {
-
         Liste l1 = new Liste(3);
         l1.ajoutTete(2);
         l1.ajoutTete(6);
@@ -30,19 +29,22 @@ public class Main {
         System.out.println("Somme de l2 = " + l2.somme());
 
         System.out.println("Dernier de l1 = " + l1.dernierElt());
+        System.out.println("Dernier de l1 = " + l2.dernierElt()); l2.longueur();
+
+        System.out.println("Somme de l1 = " + l1.somme());
+        System.out.println("Somme de l2 = " + l2.somme());
+
+        System.out.println("Dernier de l1 = " + l1.dernierElt());
         System.out.println("Dernier de l1 = " + l2.dernierElt());
 
-        /*
-        System.out.println("l1 lg paire = " + l1.aLgPaire());
-        System.out.println("l2 lg paire = " + l2.aLgPaire());
-        */
+/*        System.out.println("l1 lg paire = " + l1.aLgPaire());
+        System.out.println("l2 lg paire = " + l2.aLgPaire());*/
 
         System.out.println("Longueur l1 > 2 ? = " + l1.estSupK(2));
         System.out.println("Longueur l1 > 2 ? = " + l1.estSupK(2));
         System.out.println("Longueur l1 > 3 ? = " + l1.estSupK(3));
         System.out.println("Longueur l1 > 3 ? = " + l1.estSupK(3));
 
-        /*
         System.out.println("Max l1 = " + l1.max());
         System.out.println("Max l2 = " + l2.max());
 
@@ -51,10 +53,12 @@ public class Main {
 
         l1.ajoutFin(-7);
         System.out.println("Ajout de -7 en fin de l1 = " + l1);
+        l1.ajoutFin(-2);
+        System.out.println("Ajout de -7 en fin de l1 = " + l1);
 
         l1.ajoutFinSiAbsent(4);
         System.out.println("Ajout de 4 dans l1 car absent = " + l1);
-        l1.ajoutFinSiAbsent(4);
+        l1.ajoutFinSiAbsent(3);
         System.out.println("Non ajout de 4 dans l1 car present = " + l1);
         l2.ajoutFinSiAbsent(2);
         System.out.println("Non ajout de 2 dans l2 car present " + l2);
@@ -91,13 +95,15 @@ public class Main {
         Liste L3 = new Liste(tab3);
         System.out.println("L3 = " + L3);
 
+        /*
         L3.suppToutesOcc(-3);
         System.out.println("SuppToutesOcc de L3 = " + L3);
-
+        */
 
         System.out.print("L4 a l'envers = " + L4.inverse());
-        System.out.println("");
+        System.out.println();
 
+        /*
         System.out.print("Inversion en place de L4 = ");
         L4.inverseRec();
         System.out.println(L4);
